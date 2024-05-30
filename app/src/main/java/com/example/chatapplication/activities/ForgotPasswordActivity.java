@@ -9,18 +9,26 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.chatapplication.R;
+import com.example.chatapplication.databinding.ActivityForgotPasswordBinding;
+import com.example.chatapplication.databinding.ActivitySignInBinding;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
+    private ActivityForgotPasswordBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_forgot_password);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setListeners();
+    }
+
+    private void setListeners() {
+        binding.textSignIn.setOnClickListener(v -> onBackPressed());
+//        binding.buttonReset.setOnClickListener(v -> {
+//            if (isValidSignUpDetails()) {
+//                signUp();
+//            }
+//        });
     }
 }
