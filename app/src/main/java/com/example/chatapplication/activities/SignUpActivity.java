@@ -19,6 +19,8 @@ import com.example.chatapplication.MainActivity;
 import com.example.chatapplication.databinding.ActivitySignUpBinding;
 import com.example.chatapplication.utilities.Constants;
 import com.example.chatapplication.utilities.PreferenceManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.ByteArrayOutputStream;
@@ -31,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
     private PreferenceManager preferenceManager;
     private String encodeImage;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
+        auth = FirebaseAuth.getInstance();
         setListeners();
     }
 
@@ -61,18 +65,36 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void signUp() {
         loading(true);
+        String email = binding.inputEmail.getText().toString();
+        String password = binding.inputPassword.getText().toString();
+
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = auth.getCurrentUser();
+                        saveUserDetails(firebaseUser);
+                    } else {
+                        loading(false);
+                        showToast("Registration Failed: " + task.getException().getMessage());
+                    }
+                });
+    }
+
+    private void saveUserDetails(FirebaseUser firebaseUser) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> user = new HashMap<>();
         user.put(Constants.KEY_NAME, binding.inputName.getText().toString());
         user.put(Constants.KEY_EMAIL, binding.inputEmail.getText().toString());
         user.put(Constants.KEY_PASSWORD, binding.inputPassword.getText().toString());
         user.put(Constants.KEY_IMAGE, encodeImage);
+
         database.collection(Constants.KEY_COLLECTION_USERS)
-                .add(user)
-                .addOnSuccessListener(documentReference -> {
+                .document(firebaseUser.getUid())
+                .set(user)
+                .addOnSuccessListener(aVoid -> {
                     loading(false);
                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
-                    preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
+                    preferenceManager.putString(Constants.KEY_USER_ID, firebaseUser.getUid());
                     preferenceManager.putString(Constants.KEY_NAME, binding.inputName.getText().toString());
                     preferenceManager.putString(Constants.KEY_IMAGE, encodeImage);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -81,11 +103,11 @@ public class SignUpActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(exception -> {
                     loading(false);
-                    showToast(exception.getMessage());
+                    showToast("Failed to save user details: " + exception.getMessage());
                 });
     }
 
-    private String endcodeImage(Bitmap bitmap) {
+    private String encodeImage(Bitmap bitmap) {
         int previewWidth = 150;
         int previewHeight = bitmap.getHeight() * previewWidth / bitmap.getWidth();
         Bitmap preBitmap = Bitmap.createScaledBitmap(bitmap, previewWidth, previewHeight, false);
@@ -106,7 +128,7 @@ public class SignUpActivity extends AppCompatActivity {
                             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                             binding.imageProfile.setImageBitmap(bitmap);
                             binding.textAddImage.setVisibility(View.GONE);
-                            encodeImage = endcodeImage(bitmap);
+                            encodeImage = encodeImage(bitmap);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -144,10 +166,10 @@ public class SignUpActivity extends AppCompatActivity {
     private void loading(Boolean isLoading) {
         if (isLoading) {
             binding.buttonSignUp.setVisibility(View.INVISIBLE);
-            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.progressBar.setVisibility(View.VISIBLE);
         } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
-            binding.buttonSignUp.setVisibility(View.INVISIBLE);
+            binding.buttonSignUp.setVisibility(View.VISIBLE);
         }
     }
 }

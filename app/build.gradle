@@ -53,6 +53,9 @@ dependencies {
     //Firebase
     implementation libs.firebase.firestore
     implementation libs.firebase.messaging
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')  // Cập nhật phiên bản bom mới nhất
+    implementation 'com.google.firebase:firebase-auth'
+
 
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
