@@ -67,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         loading(true);
         String email = binding.inputEmail.getText().toString();
         String password = binding.inputPassword.getText().toString();
-
+        //Create account in firebase authen
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

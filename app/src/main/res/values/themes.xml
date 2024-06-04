@@ -1,7 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Base.Theme.ChatApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-        <item name="android:statusBarColor" xmlns:tools="http://schemas.android.com/tools">@color/primary</item>
+        <item xmlns:tools="http://schemas.android.com/tools" name="android:statusBarColor">
+            @color/primary
+        </item>
     </style>
+
     <style name="Theme.ChatApplication" parent="Base.Theme.ChatApplication" />
 </resources>
