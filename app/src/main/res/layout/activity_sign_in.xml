@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_signIn_up"
+    android:background="@drawable/background_signin_up"
     android:clipToPadding="false"
     android:padding="@dimen/_24sdp"
     android:scrollbars="none"
