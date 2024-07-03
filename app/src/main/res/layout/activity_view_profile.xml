@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.ViewProfileActivity">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:background="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#141318"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lb_title"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:paddingStart="20dp"
+            android:text="@string/edit_profile"
+            android:textColor="#CCC5D1"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:text="Welcome, Nguyễn Minh Dũng!"
+            android:textColor="#CCC5D1"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/image_profile"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:text="Name"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+                <EditText
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbDOB"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:text="DOB"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+                <EditText
+                    android:id="@+id/txtDOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbSex"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:text="Sex"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#000000"
+                            android:paddingRight="10dp"
+                            android:text="Male"
+                            android:textColor="#c8c8c8" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="#000000"
+                            android:paddingRight="10dp"
+                            android:text="Female"
+                            android:textColor="#c8c8c8" />
+                    </RadioGroup>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbAddress"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:text="Address"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+                <EditText
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbPhone"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:text="Phone"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+
+                <EditText
+                    android:id="@+id/txtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#c8c8c8" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Save changes" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

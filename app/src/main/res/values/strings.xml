@@ -55,4 +55,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="profile_image">Profile image</string>
+    <string name="title_activity_view_profile">ViewProfile</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="image_profile">Image profile</string>
 </resources>

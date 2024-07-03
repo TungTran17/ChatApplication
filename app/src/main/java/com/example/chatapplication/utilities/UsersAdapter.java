@@ -1,4 +1,4 @@
-package com.example.chatapplication.activities;
+package com.example.chatapplication.utilities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
