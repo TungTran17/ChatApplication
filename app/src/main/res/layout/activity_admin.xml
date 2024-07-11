@@ -7,22 +7,22 @@
     android:orientation="vertical"
     tools:context=".activities.AdminActivity">
 
-    <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="MANAGER ACCOUNT"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:id="@+id/textTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="MANAGER ACCOUNT"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textStyle="bold" />-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/adminRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/adminRecyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1" />-->
 
 </LinearLayout>

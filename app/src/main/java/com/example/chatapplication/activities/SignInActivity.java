@@ -82,15 +82,15 @@ public class SignInActivity extends AppCompatActivity {
                                     preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                                     preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
 
-                                    if ("admin".equals(documentSnapshot.getString(Constants.KEY_ROLE))) {
-                                        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                    } else {
+//                                    if ("admin".equals(documentSnapshot.getString(Constants.KEY_ROLE))) {
+//                                        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+//                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                        startActivity(intent);
+//                                    } else {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
-                                    }
+                                    //}
                                 })
                                 .addOnFailureListener(e -> {
                                     loading(false);

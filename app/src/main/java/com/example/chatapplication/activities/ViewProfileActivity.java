@@ -58,22 +58,27 @@ public class ViewProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("TAG", document.getId() + " => " + document.getData());
-                                binding.txtName.setText(document.getData().get("name").toString());
-                                binding.txtDOB.setText(document.getData().get("dob").toString());
-                                binding.radioButton.setChecked(document.getData().get("gender").equals("Male"));
-                                binding.radioButton2.setChecked(document.getData().get("gender").equals("Female"));
-                                binding.txtDOB.setText(document.getData().get("dob").toString());
-                                binding.txtAddress.setText(document.getData().get("address").toString());
-                                binding.txtPhone.setText(document.getData().get("phone").toString());
-                                documentId= document.getId();
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("ViewProfileActivity", document.getId() + " => " + document.getData());
+                                    binding.txtName.setText(document.getData().get("name").toString());
+//                                    binding.txtDOB.setText(document.getData().get("dob").toString());
+//                                    binding.radioButton.setChecked(document.getData().get("gender").equals("Male"));
+//                                    binding.radioButton2.setChecked(document.getData().get("gender").equals("Female"));
+//                                    binding.txtAddress.setText(document.getData().get("address").toString());
+//                                    binding.txtPhone.setText(document.getData().get("phone").toString());
+                                    documentId = document.getId();
+                                }
+                            } else {
+                                Log.d("ViewProfileActivity", "No user found with the given email");
+                                showToast("No user found with the given email");
                             }
                         } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
+                            Log.d("ViewProfileActivity", "Error getting documents: ", task.getException());
                         }
                     }
                 });
+
 
         binding.btnSave.setOnClickListener(v -> {
             if(binding.txtName.getText().equals("")
