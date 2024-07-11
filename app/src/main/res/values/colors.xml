@@ -13,4 +13,5 @@
     <color name="light_orange">#FFA500</color>
     <color name="purple">#8692f7</color>
     <color name="green">#008000</color>
+    <color name="selected_item_color">#FFEB3B</color>
 </resources>

@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background_signin_up"
     android:clipToPadding="false"
     android:overScrollMode="never"
     android:padding="@dimen/_24sdp"
     android:scrollbars="none"
+
     tools:context=".activities.SignUpActivity">
 
     <LinearLayout
@@ -28,7 +29,7 @@
             android:shadowRadius="3"
             android:text="@string/sign_up"
             android:textAlignment="center"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 

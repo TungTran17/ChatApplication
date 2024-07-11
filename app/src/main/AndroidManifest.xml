@@ -21,7 +21,18 @@
             android:name=".activities.UsersActivity"
             android:exported="false"
             android:theme="@style/Theme.ChatApplication" />
-
+            android:name=".activities.ViewProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ChatApplication" />
+        <activity
+            android:name=".ViewProfile"
+            android:exported="false"
+            android:label="@string/title_activity_view_profile"
+            android:theme="@style/Theme.ChatApplication" />
+        <activity
+            android:name=".activities.AdminActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ChatApplication" />
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:exported="false" />
@@ -39,7 +50,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
-
         <service
             android:name=".firebase.MessagingService"
             android:exported="false">

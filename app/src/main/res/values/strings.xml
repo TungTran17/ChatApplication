@@ -10,7 +10,7 @@
     <string name="add_image">Add Image</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="reset_password">Reset Password</string>
+    <string name="reset_password">RESET PASSWORD</string>
     <string name="reset">RESET</string>
     <string name="title_activity_user">UserActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -58,4 +58,8 @@
     <string name="select_user">Select User</string>
     <string name="type_a_message">Type a message</string>
     <string name="online">Online</string>
+    <string name="profile_image">Profile image</string>
+    <string name="title_activity_view_profile">ViewProfile</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="image_profile">Image profile</string>
 </resources>

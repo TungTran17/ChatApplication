@@ -53,13 +53,15 @@ public class SignInActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        if (user != null) {
-                            updateUserPasswordInFirestore(email, password);
-                        }
+                        FirebaseUser user = auth.getCurrentUser();loading(false);
+                        Intent intent = new Intent(getApplicationContext(), ViewProfileActivity.class);
+                        intent.putExtra("email",user.getEmail());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     } else {
                         loading(false);
-                        showToast("Unable to sign in: " + task.getException().getMessage());
+                        String errorMessage = task.getException().getMessage();
+                        Toast.makeText(this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -79,9 +81,15 @@ public class SignInActivity extends AppCompatActivity {
                                     preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                                     preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
 
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
+                                    if ("admin".equals(documentSnapshot.getString(Constants.KEY_ROLE))) {
+                                        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
                                 })
                                 .addOnFailureListener(e -> {
                                     loading(false);
@@ -89,7 +97,7 @@ public class SignInActivity extends AppCompatActivity {
                                 });
                     } else {
                         loading(false);
-                        showToast("Unable to sign in");
+                        showToast("Unable to sign in"+task.getException().getMessage());
                     }
                 });
     }
