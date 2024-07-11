@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background_signin_up"
     android:clipToPadding="false"
     android:padding="@dimen/_24sdp"
     android:scrollbars="none"
@@ -28,7 +28,7 @@
             android:shadowRadius="3"
             android:text="@string/login"
             android:textAlignment="center"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold" />
 
@@ -122,6 +122,34 @@
                 android:textColor="@color/light_orange"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold|italic" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/socialicons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/google" />
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/facebook_logo" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/twitter_icone" />
+
         </LinearLayout>
 
     </LinearLayout>
