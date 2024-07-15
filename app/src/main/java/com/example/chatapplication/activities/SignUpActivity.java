@@ -80,7 +80,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void saveUserDetails(FirebaseUser firebaseUser) {
-        String email = binding.inputEmail.getText().toString();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> user = new HashMap<>();
         user.put(Constants.KEY_NAME, binding.inputName.getText().toString());
@@ -98,7 +97,6 @@ public class SignUpActivity extends AppCompatActivity {
                     preferenceManager.putString(Constants.KEY_NAME, binding.inputName.getText().toString());
                     preferenceManager.putString(Constants.KEY_IMAGE, encodeImage);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("emailCurrentUser", email);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 })
