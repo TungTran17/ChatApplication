@@ -26,6 +26,9 @@
             android:name=".activities.ForgotPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.ViewProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SignUpActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity

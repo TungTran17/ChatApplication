@@ -30,6 +30,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,6 +45,9 @@ public class MainActivity extends BaseActivity implements ConversionListener {
     private List<ChatMessage> conversations;
     private RecentConversationsAdapter conversationsAdapter;
     private FirebaseFirestore  database;
+    private RoundedImageView imageProfile;
+    private String email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +55,37 @@ public class MainActivity extends BaseActivity implements ConversionListener {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager= new PreferenceManager(getApplicationContext());
+
+
         init();
         loadUserDetails();
         getToken();
         setListeners();
         listenConversatioins();
+        bindingView();
+        onReceiveIntent();
+        bindingAction();
+    }
 
+    private void onReceiveIntent() {
+        Intent i = getIntent();
+        email = i.getStringExtra("emailCurrentUser");
+    }
+
+    private void bindingAction() {
+        imageProfile.setOnClickListener(this::OnClickImageProfile);
+
+    }
+
+    private void bindingView() {
+        imageProfile = findViewById(R.id.imageProfile);
+
+    }
+
+    private void OnClickImageProfile(View view) {
+        Intent intent = new Intent(this, ViewProfileActivity.class);
+        intent.putExtra("emailCurrentUser", email);
+        startActivity(intent);
     }
 
     private void init(){
